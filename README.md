@@ -12,6 +12,10 @@ This repository contains clean, robust implementations of classic multi-threadin
 * **The Challenge:** Managing database access where multiple readers can read concurrently, but writers require exclusive access. 
 * **The Solution:** Implemented using a binary semaphore (`writer`) for exclusive access and a secondary binary semaphore (`mutex`) to safely protect a shared reader counter (`rc`).
 
+* ### 3. The Dining Philosophers Problem
+* **The Challenge:** Five philosophers sit around a table alternating between thinking and eating. They share five chopsticks, and each needs two adjacent chopsticks to eat. If every philosopher grabs their left chopstick at the same time, the system permanently freezes.
+* **The Solution:** Implemented using an array of binary semaphores (`fork`). Deadlock is prevented by breaking the circular wait symmetry—forcing the final philosopher (`id == 4`) to pick up their right chopstick first, ensuring at least one thread can always eat and release its resources.
+
 ---
 
 ## 🛠️ Tech Stack & Prerequisites
